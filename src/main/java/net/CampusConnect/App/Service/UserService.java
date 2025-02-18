@@ -35,6 +35,13 @@ public class UserService {
         return true;
     }
 
+    public boolean SaveAdmin(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(Arrays.asList("ADMIN"));
+        userRepository.save(user);
+        return true;
+    }
+
 
 
     public List<User> getAllUsers() {
